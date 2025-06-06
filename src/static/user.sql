@@ -1,9 +1,8 @@
 #创建数据库
-create database book_share_system;
+# create database book_share_system;
 
 # 使用数据库
 use book_share_system;
-
 
 drop table if exists buy;
 #积分商城
@@ -16,20 +15,20 @@ create table buy
     buy_time datetime #购买时间
 );
 
-select * from user_message,book,book_time,booktype where book_time.uid=user_message.uid and book.bid=book_time.bid and book.bt_id=booktype.bt_id and username like '%{$username}%';
+# select * from user_message,book,book_time,booktype where book_time.uid=user_message.uid and book.bid=book_time.bid and book.bt_id=booktype.bt_id and username like '%{$username}%';
 
-insert into user_message (uid, username, phone, password, gender, birthday)values ('$uid','$username','$phone','$gender','$birthday');
+# insert into user_message (uid, username, phone, password, gender, birthday)values ('$uid','$username','$phone','$gender','$birthday');
 
-select book.bid,ISBN,bname,author,number,username,buy.credit,buy_time from buy,book,user_message where buy.uid=user_message.uid and book.bid=buy.bid and buy.uid='$uid';
+# select book.bid,ISBN,bname,author,number,username,buy.credit,buy_time from buy,book,user_message where buy.uid=user_message.uid and book.bid=buy.bid and buy.uid='$uid';
 
-insert into buy (uid, bid, credit, buy_time) values ('$uid','$bid',1,now());
+# insert into buy (uid, bid, credit, buy_time) values ('$uid','$bid',1,now());
 
-update book set number=number-1 where bid='$bid';
+# update book set number=number-1 where bid='$bid';
 
-update user_message set credit=credit-1 where uid='$uid';
+# update user_message set credit=credit-1 where uid='$uid';
 
-select *
-from buy;
+# select *
+# from buy;
 
 drop table if exists shopping;
 #购物车
@@ -43,15 +42,15 @@ create table shopping
 #     primary key (uid, bid)
 );
 
-delete from shopping where bid='$bid'and uid='$uid';
+# delete from shopping where bid='$bid'and uid='$uid';
 
-select book.bid,ISBN,bname,author,bt_name from shopping,book,booktype where book.bt_id=booktype.bt_id and shopping.bid=book.bid and shopping.uid='$uid' order by book.bt_id;
+# select book.bid,ISBN,bname,author,bt_name from shopping,book,booktype where book.bt_id=booktype.bt_id and shopping.bid=book.bid and shopping.uid='$uid' order by book.bt_id;
 
-select book.bid,ISBN,bname,author,bt_name from shopping,book,booktype where book.bt_id=booktype.bt_id and shopping.bid=book.bid and uid='$uid';
+# select book.bid,ISBN,bname,author,bt_name from shopping,book,booktype where book.bt_id=booktype.bt_id and shopping.bid=book.bid and uid='$uid';
 
-insert into shopping(uid, bid, number)values ('$uid','$bid',1);
+# insert into shopping(uid, bid, number)values ('$uid','$bid',1);
 
-select * from shopping where uid='$uid';
+# select * from shopping where uid='$uid';
 
 drop table if exists share;
 #共享书籍
@@ -67,51 +66,51 @@ create table share
     bt_id  int
 );
 
-insert into share(uid, bid, ISBN, bname, author, number, bt_id)
-values ('$uid', '$bid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
+# insert into share(uid, bid, ISBN, bname, author, number, bt_id)
+# values ('$uid', '$bid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
 
-update book
-set number=number - 1
-where ISBN = '$ISBN';
+# update book
+# set number=number - 1
+# where ISBN = '$ISBN';
 
-delete
-from share
-where bid = '$bid'
-  and uid = '$uid';
+# delete
+# from share
+# where bid = '$bid'
+#   and uid = '$uid';
 
-insert into share(uid, bid, ISBN, bname, author, number, bt_id)
-values ('$uid', '$bid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
+# insert into share(uid, bid, ISBN, bname, author, number, bt_id)
+# values ('$uid', '$bid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
 
-select *
-from book;
-select *
-from share,
-     user_message
-where share.uid = user_message.uid
-order by sid;
+# select *
+# from book;
+# select *
+# from share,
+#      user_message
+# where share.uid = user_message.uid
+# order by sid;
 
-update user_message
-set credit=credit + 1
-where uid = '$uid';
+# update user_message
+# set credit=credit + 1
+# where uid = '$uid';
 
-update book
-set number=number + '$number'
-where ISBN = '$ISBN';
+# update book
+# set number=number + '$number'
+# where ISBN = '$ISBN';
 
-select *
-from book
-where ISBN = '$ISBN';
+# select *
+# from book
+# where ISBN = '$ISBN';
 
-insert into share(uid, ISBN, bname, author, number, bt_id)
-values ('$uid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
+# insert into share(uid, ISBN, bname, author, number, bt_id)
+# values ('$uid', '$ISBN', '$bname', '$author', '$number', '$bt_id');
 
-select *
-from book_time
-where uid = '$uid'
-  and bid = '$bid';
+# select *
+# from book_time
+# where uid = '$uid'
+#   and bid = '$bid';
 
-update book_time
-set borrow_time=now();
+# update book_time
+# set borrow_time=now();
 
 drop table if exists book_time;
 #借出与归还时间
@@ -127,36 +126,36 @@ create table book_time
 #     primary key (uid, bid) #设置联合主键，防止一个账号重复借阅一本书
 );
 
-insert into book_time(uid, bid, lend_time,dateline) values ('$uid', '$bid', 'now()','$dateline');
+# insert into book_time(uid, bid, lend_time,dateline) values ('$uid', '$bid', 'now()','$dateline');
 
-select ISBN,bname,username,lend_time,dateline,static from user_message as um,book_time as bt,book as b where bt.uid='$uid' and bt.bid=b.bid and bt.uid=um.uid and phone='$phone' and password='$password' order by time_id;
+# select ISBN,bname,username,lend_time,dateline,static from user_message as um,book_time as bt,book as b where bt.uid='$uid' and bt.bid=b.bid and bt.uid=um.uid and phone='$phone' and password='$password' order by time_id;
 
-update book_time set dateline='$dateline'where uid='$uid'and lend_time='$lend_time';
+# update book_time set dateline='$dateline'where uid='$uid'and lend_time='$lend_time';
 
-select ISBN, bname, username, lend_time
-from user_message as um,
-     book_time as bt,
-     book as b
-where bt.uid = 1
-  and bt.bid = b.bid
-  and bt.uid = um.uid
-  and phone = '$phone'
-  and password = '$password'
-order by bt.lend_time;
+# select ISBN, bname, username, lend_time
+# from user_message as um,
+#      book_time as bt,
+#      book as b
+# where bt.uid = 1
+#   and bt.bid = b.bid
+#   and bt.uid = um.uid
+#   and phone = '$phone'
+#   and password = '$password'
+# order by bt.lend_time;
 
-select uid
-from user_message
-where phone = '$phone'
-  and password = '$password';
+# select uid
+# from user_message
+# where phone = '$phone'
+#   and password = '$password';
 
-select * from user_message where uid=1 and phone=15816652214;
+# select * from user_message where uid=1 and phone=15816652214;
 
-select ISBN,bname,author,number,bt_name from book,booktype where book.bt_id=booktype.bt_id and bname like '一' or author like '一';
+# select ISBN,bname,author,number,bt_name from book,booktype where book.bt_id=booktype.bt_id and bname like '一' or author like '一';
 
-insert into book_time(uid, bid, lend_time,dateline) values ('$uid', '$bid', now(), '$dateline');
+# insert into book_time(uid, bid, lend_time,dateline) values ('$uid', '$bid', now(), '$dateline');
 
-insert into book_time(uid, bid, borrow_time)
-values ('$uid', '$bid', 'now()');
+# insert into book_time(uid, bid, borrow_time)
+# values ('$uid', '$bid', 'now()');
 
 drop table if exists user_message;
 # 用户个人信息表
@@ -172,16 +171,16 @@ create table user_message
 #     last_time datetime
 );
 
-update user_message set password='$psw'where phone='$phone';
+# update user_message set password='$psw'where phone='$phone';
 
-update user set password='$psw' where phone='$phone';
+# update user set password='$psw' where phone='$phone';
 
-update user_message
-set username='$username',
-    gender='$gender',
-    birthday='$birthday'
-where phone = '$phone'
-  and password = '$password';
+# update user_message
+# set username='$username',
+#     gender='$gender',
+#     birthday='$birthday'
+# where phone = '$phone'
+#   and password = '$password';
 
 insert into user_message(username, phone, password, gender, birthday)
 values ('张三', '15816652214', '123', 1, '2002-4-1');
@@ -189,10 +188,10 @@ values ('张三', '15816652214', '123', 1, '2002-4-1');
 insert into user_message(username, phone, password, gender, birthday)
 values ('赵六', '13553387866', '123', 1, '1979-7-12');
 
-select *
-from user_message
-where password = '$password'
-  and phone = '$phone';
+# select *
+# from user_message
+# where password = '$password'
+#   and phone = '$phone';
 
 drop table if exists user;
 # 用户表
@@ -203,8 +202,8 @@ create table user
     password varchar(20)        not null
 );
 
-select *
-from user;
+# select *
+# from user;
 
 insert into user(phone, password)
 values ('15816652214', '123');
@@ -218,7 +217,7 @@ create table user_book
     state int default 0
 );
 
-select ISBN,bname,username,lend_time,borrow_time,static from user_message as um,book_time as bt,book as b where bt.uid='$uid' and bt.bid=b.bid and bt.uid=um.uid and phone='$phone' and password='$password' order by time_id;
+# select ISBN,bname,username,lend_time,borrow_time,static from user_message as um,book_time as bt,book as b where bt.uid='$uid' and bt.bid=b.bid and bt.uid=um.uid and phone='$phone' and password='$password' order by time_id;
 
 
 # update book,user set number=1,password='121'where bid=bid ;
@@ -237,8 +236,8 @@ create table book
 #     last_time datetime
 );
 
-select *
-from book;
+# select *
+# from book;
 
 insert into book(ISBN, BNAME, AUTHOR, NUMBER, BT_ID)
 values ('331241', '概率论', '赵一', 3, 4);
@@ -299,25 +298,25 @@ values (1, '文学类'),
        (4, '技术科学类'),
        (5, '艺术类');
 
-select *
-from share,
-     user_message,
-     booktype
-where share.bt_id = booktype.bt_id
-  and share.uid = '1'
-  and share.uid = user_message.uid
-order by sid;
+# select *
+# from share,
+#      user_message,
+#      booktype
+# where share.bt_id = booktype.bt_id
+#   and share.uid = '1'
+#   and share.uid = user_message.uid
+# order by sid;
 
-select *
-from booktype;
+# select *
+# from booktype;
 
-select *
-from book;
+# select *
+# from book;
 
 
-select *
-from book
-where bname like '%数学%';
+# select *
+# from book
+# where bname like '%数学%';
 
-select *
-from user;
+# select *
+# from user;
