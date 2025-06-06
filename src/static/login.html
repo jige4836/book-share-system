@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="css/login.css" type="text/css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<!--<div>-->
+<!--    <form action="php/login.php" method="post">-->
+<!--        <table class="table table-striped table-bordered table-hover">-->
+<!--            <tr>-->
+<!--                <td colspan="2"><h2>图书共享系统</h2></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td style="text-align: right"><label for="name">账号：</label></td>-->
+<!--                <td><input type="text" name="name" id="name" placeholder="输入学号"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+
+<!--                <td style="text-align: right"><label for="psw">密码：</label></td>-->
+<!--                <td><input type="password" name="psw" id="psw" placeholder="输入密码"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td></td>-->
+<!--                <td><input type="submit" value="登录" id="submit">-->
+
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+<!--    <div><a href="register.html" style="font-size: 20px">-->
+<!--        &lt;!&ndash;        <input type="button" value="注册" id="login"/>&ndash;&gt;-->
+<!--        未注册账号，点此注册-->
+<!--    </a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="rg_layout">
+    <div class="rg_left">
+        <p>图书共享系统</p>
+        <p>USER POST</p>
+    </div>
+    <div class="rg_center">
+        <div class="rg_form">
+            <div style="margin: auto;padding-top: 150px">
+                <!--定义表单 form-->
+                <form action="php/login.php" method="post">
+                    <table>
+                        <tr>
+                            <td class="td_left"><label for="name">账号:</label></td>
+                            <td class="td_right"><input type="text" name="name" id="name"
+                                                        placeholder="请输入手机号"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_left"><label for="psw">密码:</label></td>
+                            <td class="td_right"><input type="password" name="psw" id="psw"
+                                                        placeholder="请输入密码"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center"><input type="submit" id="btn_sub" value="登录"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="rg_right">
+        <p>没有账号?<a href="register.html">立即注册</a></p>
+    </div>
+</div>
+
+</body>
+</html>

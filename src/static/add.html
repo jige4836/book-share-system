@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加书籍</title>
+    <link href="css/add.css"type="text/css"rel="stylesheet">
+</head>
+<body>
+<script src="js/jQuery.js"></script>
+<script>
+    $(document).ready(function () {//加载完成后执行的函数，以确保DOM元素都已经加载完毕。
+        // $('tr:even').css("background", "greenyellow");
+        $("tr:first-child").css({
+            'color': 'red',
+            'font-weight': 'bolder'
+            // 'background-color': 'yellow'
+        });
+    });
+</script>
+
+<!--<a href="php/interface.php"><input type="button"value="返回主界面" id="add_re"></a>-->
+
+<div>
+    <form action="php/add.php"method="post"id="add_form">
+        <table>
+            <tr>
+                <th colspan="2">请填写您要共享的书籍信息</th>
+            </tr>
+            <tr>
+                <td>书籍编码</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>书籍名称</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>书籍数量</td>
+                <td><input type="text"name="num"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit"id="add_sub"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
